@@ -1,0 +1,18 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PauseGameController : Controller
+{
+    public override void Execute(object data)
+    {
+        PauseArgs e = data as PauseArgs;
+
+        GameModel gm = GetModel<GameModel>();
+        gm.IsPause = true;
+
+        UIPause pause = GetView<UIPause>();
+        pause.Show();
+        pause.ShowScore(e.distance, e.coin, e.score);
+    }
+}
